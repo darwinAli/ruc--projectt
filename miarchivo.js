@@ -1,11 +1,12 @@
-import puppeteer, { PuppeteerError } from "puppeteer";
+import puppeteer from "puppeteer";
 
 async function openWebPage(numRuc){
+    console.log(puppeteer.defaultArgs())
+
     const browser=await puppeteer.launch({
-        headless:true,  // hace que nos muestre el navegador o no 
+        headless:false,  // hace que nos muestre el navegador o no 
         //slowMo:300
     });
-    console.log(puppeteer.defaultArgs())
     const page=await browser.newPage();
     await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
     await page.goto('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp')
