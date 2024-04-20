@@ -6,7 +6,7 @@ async function openWebPage(numRuc){
     const browser=await puppeteer.launch({
         headless:false,
         executablePath: process.env.PUPPETEER_CACHE_DIR,
-
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     const page=await browser.newPage();
     await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
