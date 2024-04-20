@@ -5,6 +5,7 @@
   "main": "miarchivo.js",
   "type": "module",
   "scripts": {
+    "build": "npm install && npx puppeteer browser install chrome",
     "start": "node ./server.js"
   },
   "keywords": [],
