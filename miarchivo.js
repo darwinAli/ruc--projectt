@@ -4,8 +4,8 @@ async function openWebPage(numRuc){
     console.log(puppeteer.defaultArgs())
 
     const browser=await puppeteer.launch({
-        headless:false,  // hace que nos muestre el navegador o no 
-        //slowMo:300
+        headless:false,
+        cachePath: "/opt/render/.cache/puppeteer",
     });
     const page=await browser.newPage();
     await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
