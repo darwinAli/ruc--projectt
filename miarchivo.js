@@ -24,43 +24,43 @@ async function openWebPage(numRuc) {
         
         await page.click("#btnAceptar"),
         await page.waitForURL("https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias");
-
         console.log("Espero a la url");
 
         const result = await page.evaluate(async () => {
-            await new Promise((res)=> setTimeout(res, 3000));
-            const childrens = document.querySelector(".list-group")?.children;
+            const elemento = document.querySelector(".list-group").childNodes;
+            const numeroRucName =  elemento[0].children[0].children[1].children[0].innerText.trim(); // el primer corchete decide cual salir
+            const tipoContribuyente =  elemento[1].children[0].children[1].children[0].innerText.trim();
+            const nombreComercial = elemento[2].children[0].children[1].children[0].innerHTML.trim(); 
+            const fechaInscripcion = elemento[3].children[0].children[1].children[0].innerText.trim();
+            const estadoContribuyente = elemento[4].children[0].children[1].children[0].innerText.trim(); 
+            const condicionContribuyente = elemento[5].children[0].children[1].children[0].innerText.trim(); 
+            const domicilioFiscal = elemento[6].children[0].children[1].children[0].innerText.trim();
+            const sistemaEmisionComprobante = elemento[7].children[0].children[1].children[0].innerText.trim();
+            const actividadComercio = elemento[7].children[0].children[3].children[0].innerText.trim();
+            const sistemaContabilidad = elemento[8].children[0].children[1].children[0].innerText.trim();
+        
+            const emisorElectronicoDesde = elemento[12].children[0].children[1].children[0].innerText.trim();
+            const comprobanteElectronico = elemento[13].children[0].children[1].children[0].innerText.trim();
+            const afiliadoAlPleDesde = elemento[14].children[0].children[1].children[0].innerText.trim();
             
-            const obtenerTexto = (childrens, childIndex) => {
-                return childrens.children[0].children[childIndex].children[0].innerText.trim();
+            
+            return {
+                numeroRucName: numeroRucName,
+                tipoContribuyente: tipoContribuyente,
+                nombreComercial: nombreComercial,
+                fechaInscripcion: fechaInscripcion,
+                estadoContribuyente: estadoContribuyente,
+                condicionContribuyente: condicionContribuyente,
+                domicilioFiscal: domicilioFiscal,
+                sistemaEmisionComprobante: sistemaEmisionComprobante,
+                actividadComercio: actividadComercio,
+                sistemaContabilidad:sistemaContabilidad,
+                emisorElectronicoDesde:emisorElectronicoDesde,
+                comprobanteElectronico:comprobanteElectronico,
+                afiliadoAlPleDesde: afiliadoAlPleDesde,
+            
             }
-
-            const campos = [
-                { nombre: 'numeroRucName', indice: 1, elementoIndice: 0 },
-                { nombre: 'tipoContribuyente', indice: 1, elementoIndice: 1 },
-                { nombre: 'nombreComercial', indice: 1, elementoIndice: 2 },
-                { nombre: 'fechaInscripcion', indice: 1, elementoIndice: 3 },
-                { nombre: 'estadoContribuyente', indice: 1, elementoIndice: 4 },
-                { nombre: 'condicionContribuyente', indice: 1, elementoIndice: 5 },
-                { nombre: 'domicilioFiscal', indice: 1, elementoIndice: 6 },
-                { nombre: 'sistemaEmisionComprobante', indice: 1, elementoIndice: 7 },
-                { nombre: 'actividadComercio', indice: 3, elementoIndice: 7 },
-                { nombre: 'sistemaContabilidad', indice: 1, elementoIndice: 8 },
-                { nombre: 'emisorElectronicoDesde', indice: 1, elementoIndice: 12 },
-                { nombre: 'comprobanteElectronico', indice: 1, elementoIndice: 13 },
-                { nombre: 'afiliadoAlPleDesde', indice: 1, elementoIndice: 14 }
-            ];
-
-            const resultado = {};
-
-            campos.forEach((campo) => {
-                resultado[campo.nombre] = obtenerTexto(childrens[campo.elementoIndice], campo.indice);
-            });
-
-            return resultado;
-
         })
-
 
         return result;
     } catch (error) {
