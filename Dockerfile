@@ -17,6 +17,7 @@ COPY testDelete.js ./
 
 # Install Deps
 RUN npm install
+RUN npx playwright install
 
 # Run Node index.js file
 CMD [ "npm", "start" ]
