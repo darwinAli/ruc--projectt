@@ -22,9 +22,9 @@ async function openWebPage(numRuc) {
         await page.click("#txtRuc");
         await page.fill("#txtRuc", numRuc);
         await page.click("#btnAceptar");
+        console.log("Wait for selector finally")
         await page.waitForSelector(".list-group", {state: 'attached' });
 
-        console.log("Wait for selector finally")
         const result = await page.evaluate(() => {
             const el = document.querySelector("h1");
             return {el:el}
