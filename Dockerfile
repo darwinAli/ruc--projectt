@@ -1,6 +1,6 @@
 # Build Environment: Node + Playwright
 FROM node:20
-FROM mcr.microsoft.com/playwright:focal
+FROM mcr.microsoft.com/playwright:v1.43.0-jammy
 
 # Env
 WORKDIR /app

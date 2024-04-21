@@ -24,7 +24,7 @@ async function openWebPage(numRuc) {
         console.log("despues de la page")
 
     
-        await page.goto('https://adevsays.com', { timeout: 60000 });
+        await page.goto('https://adevsays.com');
         console.log("llego hsata la conexion")
 
             // await page.goto('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp', { timeout: 60000 });
