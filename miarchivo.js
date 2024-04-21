@@ -23,19 +23,18 @@ async function openWebPage(numRuc) {
         await page.fill("#txtRuc", numRuc),
         
         await page.click("#btnAceptar"),
-        await page.waitForURL("https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias")
+        await page.waitForURL("https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias");
+
         console.log("Espero a la url");
 
-        const result = await page.evaluate(async () => {
-            let element = document.querySelector(".list-group");
-            if(!element) {
-                console.log("NO existia pero se va a crear ahora")
-                setTimeout(()=>{
-                    element = document.querySelector(".list-group");
-                }, 3000);
-            };
-            const childrens = element?.children;
+        await page.waitForSelector(".list-group", {state:"visible", timeout: 600000});
 
+        console.log("Espero al selector");
+
+
+        const result = await page.evaluate(async () => {
+            const childrens = document.querySelector(".list-group")?.children;
+            
             const obtenerTexto = (childrens, childIndex) => {
                 return childrens.children[0].children[childIndex].children[0].innerText.trim();
             }
