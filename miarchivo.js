@@ -6,6 +6,7 @@ async function openWebPage(numRuc) {
     const browser = await puppeteer.launch({
         headless: true
     });
+    console.log("cargo la pagina")
 
     try {
         const page = await browser.newPage();
@@ -22,14 +23,12 @@ async function openWebPage(numRuc) {
 
         // Aquí puedes agregar el código para extraer la información que necesitas de la página.
         // Por ejemplo, podrías usar page.evaluate() para ejecutar código en el contexto de la página.
-
+        await browser.close();
         return result;
     } catch (error) {
         console.error(error);
         throw error;
-    } finally {
-        await browser.close();
-    }
+    } 
 }
 
 export { openWebPage };
