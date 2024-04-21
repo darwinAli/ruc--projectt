@@ -19,10 +19,10 @@ async function openWebPage(numRuc) {
         await page.goto('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp', {timeout: 60000});
         console.log("llego hasta la conexion con el link");
 
-        await page.click("#txtRuc"),
-        await page.fill("#txtRuc", numRuc),
-        
-        await page.click("#btnAceptar"),
+        await page.click("#txtRuc");
+        await page.fill("#txtRuc", numRuc);
+        await page.click("#btnAceptar");
+        console.log("se hizo click")
         await page.waitForURL("https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias");
         console.log("Espero a la url");
 
