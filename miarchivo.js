@@ -27,12 +27,8 @@ async function openWebPage(numRuc) {
 
         console.log("Espero a la url");
 
-        await page.waitForSelector(".list-group", {state:"visible", timeout: 0});
-
-        console.log("Espero al selector");
-
-
         const result = await page.evaluate(async () => {
+            await new Promise((res)=> setTimeout(res, 3000));
             const childrens = document.querySelector(".list-group")?.children;
             
             const obtenerTexto = (childrens, childIndex) => {
