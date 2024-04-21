@@ -1,14 +1,22 @@
 import { firefox } from 'playwright';
 
 async function openWebPage(numRuc) {
-    console.log(numRuc)
+    console.log("Entrando al scrap")
+
     const browser = await firefox.launch({
         headless: true
     });
+    console.log("despues del browser")
+
     const context = await browser.newContext();
+    console.log("despues del context")
     const page = await context.newPage();
+    console.log("despues de la page")
+
     try {
         await page.goto('https://adevsays.com', { timeout: 60000 });
+    console.log("llego hsata la conexion")
+
         // await page.goto('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp', { timeout: 60000 });
 
         const result = await page.evaluate(()=>{
