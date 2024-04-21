@@ -2,14 +2,12 @@ import puppeteer from 'puppeteer';
 
 async function openWebPage(numRuc) {
     console.log("Entrando al scrap")
-    let browser = null;
+
+    const browser = await puppeteer.launch({
+        headless: true
+    });
 
     try {
-        browser = await puppeteer.launch({
-            headless: true
-        });
-        console.log("despues del browser")
-
         const page = await browser.newPage();
         console.log("despues de la page")
 
