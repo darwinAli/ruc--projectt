@@ -63,6 +63,7 @@ async function openWebPage(numRuc) {
         return result;
     } catch (error) {
         console.error(error);
+        throw error;
     } finally {
         await browser.close();
     }
