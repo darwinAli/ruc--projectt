@@ -56,6 +56,7 @@ COPY testDelete.js ./
 
 # Install Deps
 RUN npm install
+RUN npx puppeter install 
 
 # Run Node index.js file
 CMD [ "npm", "start" ]
