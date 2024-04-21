@@ -27,10 +27,8 @@ async function openWebPage(numRuc) {
         console.log("Espero a la url");
 
         const result = await page.evaluate(async () => {
-            const h1 = document.querySelector("h1");
             return{
-                el: h1.textContent,
-                form: document.querySelector("form").innerHTML
+                el: document.body.innerHTML
             }
             // await new Promise((res)=> setTimeout(res, 30000))
             // const elemento = document.querySelector(".list-group").children;
