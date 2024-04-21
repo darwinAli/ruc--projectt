@@ -28,12 +28,13 @@ async function openWebPage(numRuc) {
         await page.waitForURL("https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias")
         console.log("Espero a la url");
 
-        // await page.waitForSelector(".list-group", {state: 'visible', timeout: 30000});
+        await page.waitForSelector(".list-group", {state: 'visible', timeout: 30000});
   
 
         const result = await page.evaluate(() => {
 
-            const elemento = document.querySelector(".list-group").children;
+            const elemento = [...document.querySelector(".list-group").children];
+            
             const numeroRucName =  elemento[0].children[0].children[1].children[0].innerText.trim(); // el primer corchete decide cual salir
             const tipoContribuyente =  elemento[1].children[0].children[1].children[0].innerText.trim();
             const nombreComercial = elemento[2].children[0].children[1].children[0].innerHTML.trim(); 
@@ -66,12 +67,10 @@ async function openWebPage(numRuc) {
                 afiliadoAlPleDesde: afiliadoAlPleDesde,
             
             }
-                
         
         })
 
-        // Aquí puedes agregar el código para extraer la información que necesitas de la página.
-        // Por ejemplo, podrías usar page.evaluate() para ejecutar código en el contexto de la página.
+
         return result;
     } catch (error) {
         console.error(error);
