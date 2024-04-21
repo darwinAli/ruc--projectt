@@ -27,7 +27,7 @@ async function openWebPage(numRuc) {
 
         console.log("Espero a la url");
 
-        await page.waitForSelector(".list-group", {state:"visible", timeout: 600000});
+        await page.waitForSelector(".list-group", {state:"visible", timeout: 0});
 
         console.log("Espero al selector");
 
