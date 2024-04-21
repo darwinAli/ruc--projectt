@@ -2,8 +2,8 @@
 FROM mcr.microsoft.com/playwright:focal
 
 # Env
-WORKDIR /usr/src/app/
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
 
 # Export port 3000 for Node
 EXPOSE 3001
