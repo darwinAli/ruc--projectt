@@ -1,11 +1,5 @@
 import {chromium} from "playwright";
 
-async function wait(timer){
-    return new Promise((resolve)=>{
-        setTimeout(resolve, timer);
-    })
-}
-
 async function openWebPage(numRuc) {
     console.log("Entrando al scrap")
     let browser = null;
@@ -31,14 +25,14 @@ async function openWebPage(numRuc) {
         await page.click("#btnAceptar"),
         await page.waitForURL("https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias")
         console.log("Espero a la url");
-        await wait(3000);
-        console.log("Esperó los 3 segundos.")
 
         const result = await page.evaluate(async () => {
             let element = document.querySelector(".list-group");
             if(!element) {
-                await wait(3000);
-                element = document.querySelector(".list-group");
+                console.log("NO existia pero se va a crear ahora")
+                setTimeout(()=>{
+                    element = document.querySelector(".list-group");
+                }, 3000);
             };
             const childrens = element?.children;
 
