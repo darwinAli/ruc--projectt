@@ -24,17 +24,16 @@ async function openWebPage(numRuc) {
 
         
         await page.click("#btnAceptar"),
-        await page.waitForLoadState('load');
-        
-        console.log("Wait for selector finally");
-        await page.waitForSelector(".list-group", {state: 'visible', timeout: 30000});
+        // await page.waitForLoadState('load');
+        await page.waitForURL("https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias")
+        console.log("Espero a la url");
+
+        // await page.waitForSelector(".list-group", {state: 'visible', timeout: 30000});
   
 
         const result = await page.evaluate(() => {
-            // const el = document.querySelector("h1");
-            // return {el:el.textContent}
-            console.log("Llegamos a evaluate");
-            const elemento = document.querySelector(".list-group"    ).children;
+
+            const elemento = document.querySelector(".list-group").children;
             const numeroRucName =  elemento[0].children[0].children[1].children[0].innerText.trim(); // el primer corchete decide cual salir
             const tipoContribuyente =  elemento[1].children[0].children[1].children[0].innerText.trim();
             const nombreComercial = elemento[2].children[0].children[1].children[0].innerHTML.trim(); 
