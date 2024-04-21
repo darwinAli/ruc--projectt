@@ -1,5 +1,5 @@
 # Build Environment: Node + Playwright
-FROM node:20
+FROM node:20.11.1
 FROM mcr.microsoft.com/playwright:focal
 
 # Env
