@@ -34,8 +34,9 @@ async function openWebPage(numRuc) {
         await wait(3000);
         console.log("Esperó los 3 segundos.")
 
-        const result = await page.evaluate(() => {
-            const childrens = document.querySelector(".list-group").children;
+        const result = await page.evaluate(async () => {
+            if(!childrens) await wait(3000);
+            const childrens = document.querySelector(".list-group")?.children;
 
             const obtenerTexto = (childrens, childIndex) => {
                 return childrens.children[0].children[childIndex].children[0].innerText.trim();
