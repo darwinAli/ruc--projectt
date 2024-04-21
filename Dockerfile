@@ -52,6 +52,7 @@ EXPOSE 3001
 COPY package*.json ./
 COPY miarchivo.js ./
 COPY server.js ./
+COPY testDelete.js ./
 
 # Install Deps
 RUN npm install
