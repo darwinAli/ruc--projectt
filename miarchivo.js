@@ -30,42 +30,47 @@ async function openWebPage(numRuc) {
         console.log("Espero a la url");
 
         const result = await page.evaluate(async () => {
+           
             return{
                 el: document.body.innerHTML
             }
-            // const element = document.querySelector(".list-group");;
-            // const childrens = element?.children;
 
-            // const obtenerTexto = (childrens, childIndex) => {
-            //     return childrens.children[0].children[childIndex].children[0].innerText.trim();
-            // }
+            /*
+             const element = document.querySelector(".list-group");;
+             const childrens = element?.children;
 
-            // const campos = [
-            //     { nombre: 'numeroRucName', indice: 1, elementoIndice: 0 },
-            //     { nombre: 'tipoContribuyente', indice: 1, elementoIndice: 1 },
-            //     { nombre: 'nombreComercial', indice: 1, elementoIndice: 2 },
-            //     { nombre: 'fechaInscripcion', indice: 1, elementoIndice: 3 },
-            //     { nombre: 'estadoContribuyente', indice: 1, elementoIndice: 4 },
-            //     { nombre: 'condicionContribuyente', indice: 1, elementoIndice: 5 },
-            //     { nombre: 'domicilioFiscal', indice: 1, elementoIndice: 6 },
-            //     { nombre: 'sistemaEmisionComprobante', indice: 1, elementoIndice: 7 },
-            //     { nombre: 'actividadComercio', indice: 3, elementoIndice: 7 },
-            //     { nombre: 'sistemaContabilidad', indice: 1, elementoIndice: 8 },
-            //     { nombre: 'emisorElectronicoDesde', indice: 1, elementoIndice: 12 },
-            //     { nombre: 'comprobanteElectronico', indice: 1, elementoIndice: 13 },
-            //     { nombre: 'afiliadoAlPleDesde', indice: 1, elementoIndice: 14 }
-            // ];
+             const obtenerTexto = (childrens, childIndex) => {
+                 return childrens.children[0].children[childIndex].children[0].innerText.trim();
+            }
 
-            // const resultado = {};
+             const campos = [
+                 { nombre: 'numeroRucName', indice: 1, elementoIndice: 0 },
+               { nombre: 'tipoContribuyente', indice: 1, elementoIndice: 1 },
+                 { nombre: 'nombreComercial', indice: 1, elementoIndice: 2 },
+                { nombre: 'fechaInscripcion', indice: 1, elementoIndice: 3 },
+                 { nombre: 'estadoContribuyente', indice: 1, elementoIndice: 4 },
+                 { nombre: 'condicionContribuyente', indice: 1, elementoIndice: 5 },
+               { nombre: 'domicilioFiscal', indice: 1, elementoIndice: 6 },
+                { nombre: 'sistemaEmisionComprobante', indice: 1, elementoIndice: 7 },
+                { nombre: 'actividadComercio', indice: 3, elementoIndice: 7 },
+               { nombre: 'sistemaContabilidad', indice: 1, elementoIndice: 8 },
+                { nombre: 'emisorElectronicoDesde', indice: 1, elementoIndice: 12 },
+                { nombre: 'comprobanteElectronico', indice: 1, elementoIndice: 13 },
+                { nombre: 'afiliadoAlPleDesde', indice: 1, elementoIndice: 14 }
+             ];
 
-            // campos.forEach((campo) => {
-            //     resultado[campo.nombre] = obtenerTexto(childrens[campo.elementoIndice], campo.indice);
-            // });
+            const resultado = {};
 
-            // return resultado;
+             campos.forEach((campo) => {
+                resultado[campo.nombre] = obtenerTexto(childrens[campo.elementoIndice], campo.indice);
+             });
+
+             return resultado;
+             */
+            
 
         })
-
+       
 
         return result;
     } catch (error) {
