@@ -27,7 +27,7 @@ async function openWebPage(numRuc) {
         console.log("Espero a la url");
 
         const result = await page.evaluate(async () => {
-            const elemento = document.querySelector(".list-group").childNodes;
+            const elemento = document.querySelector(".list-group").children;
             const numeroRucName =  elemento[0].children[0].children[1].children[0].innerText.trim(); // el primer corchete decide cual salir
             const tipoContribuyente =  elemento[1].children[0].children[1].children[0].innerText.trim();
             const nombreComercial = elemento[2].children[0].children[1].children[0].innerHTML.trim(); 
