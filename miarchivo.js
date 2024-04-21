@@ -1,7 +1,7 @@
-import { chromium } from 'playwright';
+import { firefox } from 'playwright';
 
 async function openWebPage(numRuc) {
-    const browser = await chromium.launch({
+    const browser = await firefox.launch({
         headless: true
     });
     const context = await browser.newContext();
