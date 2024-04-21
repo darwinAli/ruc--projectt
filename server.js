@@ -18,7 +18,7 @@ app.get('/scrape/:numRuc', async (req, res) => {
         res.json(result);
     } catch (error) {
         console.error("Error al consultar RUC:", error);
-        res.status(500).send('Ocurrió un error al consultar el RUC.', error);
+        res.status(500).send('Ocurrió un error al consultar el RUC.');
     }
 });
 

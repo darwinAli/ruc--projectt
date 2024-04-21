@@ -10,21 +10,22 @@ async function openWebPage(numRuc) {
             headless: true
         });
         console.log("cargo la pagina")
-    
-        const page = await browser.newPage();
+        
+        const page = await browser.newPage({
+            userAgent:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537' 
+        });
         console.log("despues de la page")
         
-        await page.goto('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp', { timeout: 60000 });
+        await page.goto('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp', {timeout: 60000});
         console.log("llego hasta la conexion");
 
         await page.click("#txtRuc");
         await page.fill("#txtRuc", numRuc);
         await page.click("#btnAceptar");
-        await page.waitForSelector(".list-group", { timeout: 60000, state: 'attached' });
+        await page.waitForSelector(".list-group", {timeout: 60000, state: 'attached' });
 
         const result = await page.evaluate(() => {
-            const elemento = document.querySelectorAll('.list-group')[0].children;
-            
+            const elemento = document.querySelector(".list-group").children;
             const numeroRucName =  elemento[0].children[0].children[1].children[0].innerText.trim(); // el primer corchete decide cual salir
             const tipoContribuyente =  elemento[1].children[0].children[1].children[0].innerText.trim();
             const nombreComercial = elemento[2].children[0].children[1].children[0].innerHTML.trim(); 
