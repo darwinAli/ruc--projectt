@@ -8,7 +8,7 @@ async function openWebPage(numRuc) {
     const context = await browser.newContext();
     const page = await context.newPage();
     try {
-        await page.goto('https://dashboard.render.com/web/srv-coi5eutjm4es739irjo0/logs', { timeout: 60000 });
+        await page.goto('https://adevsays.com', { timeout: 60000 });
         // await page.goto('https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp', { timeout: 60000 });
 
         const result = await page.evaluate(()=>{
